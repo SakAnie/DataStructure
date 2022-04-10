@@ -41,6 +41,7 @@ public class WindowSliding {
 			} else {
 				map.put(a[i-k], map.get(a[i-k]) - 1); // window slide
 			}
+			map.put(a[i], map.getOrDefault(a[i], 0) + 1);//keep on adding further elements to the map
 			System.out.println(map.size());
 		}
 
