@@ -34,12 +34,12 @@ public class WindowSliding {
 		// Handle from index =K to a.length
 		for (int i = k; i < a.length; i++) {
 
-			// if a[i-k] frequency is > 1 , then substract 1 from its frequncy part , else
+			// if a[i-k] frequency is > 1 , then substract 1 from its existing frequncy part , else
 			// if =1, then remove a[i-k]
 			if (map.get(a[i - k]) == 1) {
 				map.remove(a[i - k]);
 			} else {
-				map.put(a[i], map.getOrDefault(a[i], 0) - 1); // window slide
+				map.put(a[i-k], map.get(a[i-k]) - 1); // window slide
 			}
 			System.out.println(map.size());
 		}
