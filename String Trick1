@@ -1,0 +1,23 @@
+//Convert a String/statement into words or array of letters
+//str.split(" ") -->for achieving array of words
+//str2.toChararray() --> for achieving array of characters
+
+class HelloWorld {
+    public static void main(String[] args) {
+        //Convert a given Statement into array of Words
+        String str1="My name is Sakshi Sinha!I am an archanegel!";
+        String[] words_array = str1.split(" ");
+        for(String word:words_array){
+            System.out.println(word);
+        }
+        
+        
+        //Convert a given String into array of characters
+        String str2="Sakshi";
+        char[] char_array= str2.toCharArray();
+        for(char c : char_array){
+            System.out.println(c);
+        }
+        
+    }
+}
