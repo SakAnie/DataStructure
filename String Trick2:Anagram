@@ -1,0 +1,71 @@
+//Anagram :
+//Change the given strings to same case --> convert them to arrays --> sort both the arrays --->array comparison
+
+//Step1: Convert both string to lower or upper case -> *str.toLowerCase()*
+
+//Step2: Convert strings to the char_arrays using *str.toCharArray()*
+
+//Step3: Sort both the char using *Arrays.sort(a1)*
+
+//Step4: Finally compare the Sorted char_arrays *Arrays.equals(a1,a2)*
+
+import java.util.Arrays;  
+class HelloWorld {
+    public static void main(String[] args) {
+
+    
+        String str1="sakshi";
+        String str2="akhisi";
+        
+        //Step1: Convert Strings to same case
+        str1.toLowerCase();
+        str2.toLowerCase();
+        
+        //Step2:Convert Strings into Character Arrays
+        System.out.println("string1 is");
+        char[] char_array= str1.toCharArray();
+        for(char c : char_array){
+            System.out.print(c);
+        }
+        
+        System.out.println("\nstring2 is");
+        char[] char_array2= str2.toCharArray();
+        for(char c : char_array2){
+            System.out.print(c);
+        }
+        
+        //Step3: Sort the Arrays Arrays.sort(array1)
+        Arrays.sort(char_array);
+        Arrays.sort(char_array2);
+        
+        //Step4: Comparison Arrays.equals(array1,array2)
+        if(str1.length()==str2.length()){
+            //code
+            boolean is_anagram=Arrays.equals(char_array,char_array2);
+            if(is_anagram){
+                System.out.println("\nOutput is: Anagram1");
+            }
+            else{
+            System.out.println("\nNot Anagram1");
+            }
+            
+        }
+        else{
+            System.out.println("\nNot Anagram1");
+        }
+        
+        
+    }
+}
+
+
+Output:
+
+java -cp /tmp/3DGjrrmOBH/HelloWorld
+string1 is
+sakshi
+string2 is
+akhisi
+Not Anagram1
+
+=== Code Execution Successful ===
