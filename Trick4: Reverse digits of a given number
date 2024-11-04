@@ -1,0 +1,39 @@
+//Example1: Reverse digits of a given number
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Reverse digits of a given string /Extract each digit from a given number to solve further questions");
+        int n=123;
+        int r;
+        
+       while(n!=0){
+        r=n%10; //3,2,1
+        System.out.print(r);
+        n=n/10; //12,1,0
+       }
+      
+    }
+}
+SOLUTION:
+java -cp /tmp/k9M7YD2FD2/HelloWorld
+Reverse digits of a given string /Extract each digit from a given number to solve further questions
+321
+=== Code Execution Successful ===
+
+//Example2: Find sum of the squares of of each digit of the given number
+//Ex: 123 = 1+4+9=14
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Find sum of the squares of of each digit of the given number");
+        int n=123;
+        int r;
+        int sum=0;
+        
+       while(n!=0){
+        r=n%10; //3,2,1 , UNIT PLACE DIGIT- REMAINDER
+        sum+=r*r;
+        n=n/10; //12,1,0 //REST Quotient
+       }
+      
+      System.out.print(ans);
+    }
+}
