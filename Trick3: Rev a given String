@@ -39,3 +39,31 @@ Reverse a string in java
 Reverse isihskaS
 
 === Code Execution Successful ===
+
+//Method3: Reverse each word of a given string
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Reverse each word of a given string");
+        String s="Sakshi is a good coder";
+     
+        
+        //Convert the statement to array of Strings using split()
+        String[] word_array=s.split(" ");
+        for (String word:word_array){
+            System.out.print(word);
+        }
+        System.out.println("......");
+        
+        for(int i=word_array.length-1;i>=0;i--){
+            System.out.print(word_array[i]+" ");
+        }
+       
+    }
+      
+}
+Solution:
+Reverse each word of a given string
+Sakshiisagoodcoder......
+coder good a is Sakshi 
+=== Code Execution Successful ===
