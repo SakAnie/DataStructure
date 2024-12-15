@@ -41,17 +41,15 @@ class Solution {
         
         // Iterate through the array to find the two numbers
         for (int i = 0; i < nums.length; i++) {
-            int currentNum = nums[i];  // Current number in the array
-            int complement = target - currentNum;  // The number needed to reach the target
-
+           
             // Check if the complement is already in the map
-            if (hm.containsKey(complement)) {
+            if (hm.containsKey(target - nums[i])) {
                 // If complement found, return the indices of the two numbers
-                return new int[] { hm.get(complement), i };
+                return new int[] { hm.get(target - nums[i]), i };
             }
 
             // If complement not found, store the current number and its index in the map
-            hm.put(currentNum, i);
+            hm.put(nums[i], i);
         }
         
         // If no solution is found (though the problem guarantees one)
