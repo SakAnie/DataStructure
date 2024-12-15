@@ -37,21 +37,21 @@ public class twosumFindIndex {
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         // Create a map to store numbers and their indices
-        HashMap<Integer, Integer> numToIndex = new HashMap<>();
+        HashMap<Integer, Integer> hm = new HashMap<>();
         
         // Iterate through the array to find the two numbers
-        for (int currentIndex = 0; currentIndex < nums.length; currentIndex++) {
-            int currentNum = nums[currentIndex];  // Current number in the array
+        for (int i = 0; i < nums.length; i++) {
+            int currentNum = nums[i];  // Current number in the array
             int complement = target - currentNum;  // The number needed to reach the target
 
             // Check if the complement is already in the map
-            if (numToIndex.containsKey(complement)) {
+            if (hm.containsKey(complement)) {
                 // If complement found, return the indices of the two numbers
-                return new int[] { numToIndex.get(complement), currentIndex };
+                return new int[] { hm.get(complement), currentIndex };
             }
 
             // If complement not found, store the current number and its index in the map
-            numToIndex.put(currentNum, currentIndex);
+            hm.put(currentNum, i);
         }
         
         // If no solution is found (though the problem guarantees one)
