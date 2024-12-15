@@ -47,7 +47,7 @@ class Solution {
             // Check if the complement is already in the map
             if (hm.containsKey(complement)) {
                 // If complement found, return the indices of the two numbers
-                return new int[] { hm.get(complement), currentIndex };
+                return new int[] { hm.get(complement), i };
             }
 
             // If complement not found, store the current number and its index in the map
