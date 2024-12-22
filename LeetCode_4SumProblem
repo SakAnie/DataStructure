@@ -6,13 +6,39 @@ Given an array nums of n integers, return an array of all the unique quadruplets
 a, b, c, and d are distinct.
 nums[a] + nums[b] + nums[c] + nums[d] == target
 You may return the answer in any order.
-
- 
-
-Example 1:
-
 Input: nums = [1,0,-1,0,-2,2], target = 0
 Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+
+SOLN:
+PLEASE NOTE: REMOVING DUPLICATES FOR AN ARRAY ELEMENT(if) VS POINTER BASED ELEMENT(while)
+-------- HERE TWO ARRAY ELEMENTS ARE FIXED nums[i] & nums[j]
+So, << SKIPPING DUPLICATE LOGIC will be based on comparing with PREVIOUS ELEMENT using "if Condition" >>
+
+// Skip duplicates for the first element using "if"
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue; //skip nums[i] : concept: how to skip duplicate of an array element
+            }
+
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                // Skip duplicates for the second element using "if"
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                    continue;//skip nums[j: concept: how to skip duplicate of an array element               
+                 }
+
+-------- HERE TWO POINTERS are at 2 elements nums[left] & nums[right]
+So, <<skipping logic for duplicates would be comparing with the next element for left and previous element for right using "while" LOOP>>
+
+//Skip duplicates for nums[left] using "while"
+                        while (left < right && nums[left] == nums[left + 1]) {
+                            left++;//NOT continue; please note the way to skip elements for nums[i],nums[j] & nums[left]&nums[right] is quite different coz we are considering them as pointers!! not elements!!!! 
+                        }
+
+                        // Skip duplicates for nums[right] using " while"
+                        while (left < right && nums[right] == nums[right - 1]) {
+                            right--;
+                        }
+
+-----------------------------------------------------------------------------------------------------------------------------------
 ----- SOLUTION USING 2 pointer approach-----------
 import java.util.*;
 
