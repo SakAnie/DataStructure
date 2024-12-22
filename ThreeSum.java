@@ -1,29 +1,45 @@
-import java.util.HashSet;
+--LEETCODE THREESOME---
+import java.util.*;
 
-public class ThreeSum {
-
-	
-	
-	public static void main(String[] args) {
-		int[] a= {1,2,3,4,5,6,7,8,4,9};
-		int key=8;
-		//Find all such set of 3 numbers in this array whose sum is equal to a given KEY: 6
-		//a[i]+a[j]+a[k]=key
-		//Find solution in O(n2)
-		
-		
-		HashSet hs=new HashSet();
-		for(int i=0;i<a.length;i++) {
-			
-			for(int j=i+1;j<a.length;j++) {
-				
-				//CORE LOGIC: IF THE HASHSET CONTAINS a[k] ( ie key-a[i]-a[j])=> then print the triplet
-				if(hs.contains(key-a[i]-a[j])) {
-					System.out.println("triplet is "+a[i]+" "+a[j]+" & "+(key-a[i]-a[j]));
-				}
-				hs.add(a[j]); //add the items to the HashSet
-				
-			}
-		}
-	}
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        
+        // Sort the array to handle duplicates and simplify triplet checking
+        Arrays.sort(nums);
+        
+        // Iterate through the array to pick the first element of the triplet
+        for (int i = 0; i < nums.length - 2; i++) {
+            // Skip duplicates for the first element of the triplet
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            
+            // Use a HashMap to find the complement for the second and third elements
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int j = i + 1; j < nums.length; j++) {
+                int target = -(nums[i] + nums[j]);  // The complement we're looking for
+                
+                // If the complement exists in the map, we have found a triplet
+                if (map.containsKey(target)) {
+                    result.add(Arrays.asList(nums[i], nums[j], target));
+                    
+                    // Skip duplicates for the second element (nums[j]) to avoid repeating triplets
+                    while (j + 1 < nums.length && nums[j] == nums[j + 1]) {
+                        j++;
+                    }
+                }
+                
+                // Add the current number (nums[j]) to the map
+                map.put(nums[j], j);
+            }
+            
+            // Skip duplicates for the first element (nums[i]) to avoid repeating triplets
+            while (i + 1 < nums.length && nums[i] == nums[i + 1]) {
+                i++;
+            }
+        }
+        
+        return result;
+    }
 }
