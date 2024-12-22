@@ -1,3 +1,4 @@
+------- NO POINTER REQUIRED HERE---so only HM sufficient----------
 import java.util.LinkedHashMap;
 import java.util.HashMap;
 import java.util.HashSet;
