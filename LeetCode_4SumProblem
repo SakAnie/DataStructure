@@ -1,0 +1,86 @@
+// VERY IMP 4 SUM PROBLEM : NOT HASHING HERE< RAHTER 2 pointer approach
+QUESTION: LEETCODE :
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+----- SOLUTION USING 2 pointer approach-----------
+import java.util.*;
+
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        // Step 1: Sort the given array
+        Arrays.sort(nums);
+
+        // Step 2: Fix the first two elements and remove their duplicates: nums[i] and nums[j]
+        for (int i = 0; i < nums.length - 3; i++) {
+            // Skip duplicates for the first element using "if"
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue; //skip nums[i] : concept: how to skip duplicate of an array element
+            }
+
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                // Skip duplicates for the second element using "if"
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                    continue;//skip nums[j: concept: how to skip duplicate of an array element               
+                 }
+
+                // Step 3: Two-pointer logic for nums[left] and nums[right]
+                int left = j + 1;
+                int right = nums.length - 1;
+                       //Step:3.1: create left and right pointers & compare the sum
+                while (left < right) {
+                    int sum = nums[i] + nums[j] + nums[left] + nums[right];
+                    
+                    //1st Condition
+                    if (sum == target) {
+
+                       //Add to the resultant List
+                        result.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                        
+                        // Step3.2: Skip duplicates for nums[left] using "while"
+                        while (left < right && nums[left] == nums[left + 1]) {
+                            left++;//NOT continue; please note the way to skip elements for nums[i],nums[j] & nums[left]&nums[right] is quite different coz we are considering them as pointers!! not elements!!!! 
+                        }
+
+                        // Skip duplicates for nums[right] using " while"
+                        while (left < right && nums[right] == nums[right - 1]) {
+                            right--;
+                        }
+
+                        // step3:3: Move both pointers after finding a valid quadruplet
+                        left++;
+                        right--;
+                //Step4: move  pointers accoridngly if sum<target or > target
+              
+                    } 
+
+                    //2nd Condition: sum<target
+                    else if (sum < target) {
+                        // If sum is too small, move the left pointer to the right
+                        left++;
+                    } 
+                    
+                    //3rd Condition: sum>target
+                    else {
+                        // If sum is too large, move the right pointer to the left
+                        right--;
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+}
