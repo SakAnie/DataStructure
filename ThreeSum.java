@@ -1,12 +1,12 @@
 --LEETCODE THREESOME---VERY VERY IMP----------
     ---- Here number of elements fixed is 1 which is nums[i], so the way to remove the duplicates of nums[i] which just as 'array elem' is this:
-      // Skip duplicates for the first element of the triplet
+      // Skip duplicates for the first element of the triplet- "compare with LEFT ELEMENT"
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
 
   ---- However j acts like a 'pointer' so way to remove duplicate elements of nums[j] is
-      // Step5:Skip duplicates for the second element (nums[j]) to avoid repeating triplets
+      // Step5:Skip duplicates for the second element (nums[j]) to avoid repeating triplets: "compare with RIGHT element"
                     while (j + 1 < nums.length && nums[j] == nums[j + 1]) {
                         j++;
                     }
