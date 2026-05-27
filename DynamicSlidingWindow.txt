@@ -1,0 +1,54 @@
+// Dynamic Sliding Window — Maximum Average Subarray
+// Pattern : Fixed-size Sliding Window
+// Time    : O(n)
+// Space   : O(1)
+
+public class DynamicSlidingWindow {
+
+    public static double findMaxAvg(int[] nums, int k) {
+        int n = nums.length;
+
+        // STEP 1: Sum of the first window
+        int sum = 0;
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
+
+        int maxSum     = sum;
+        int startIndex = 0;  // track where the best window starts
+
+        // STEP 2: Slide the window
+        for (int i = k; i < n; i++) {
+            sum = sum - nums[i - k]  // remove element leaving on the left
+                      + nums[i];     // add element entering on the right
+
+            if (sum > maxSum) {
+                maxSum     = sum;
+                startIndex = i - k + 1;  // update start of the best window
+            }
+        }
+
+        // STEP 3: Print the best subarray
+        System.out.print("Best subarray: [");
+        for (int i = startIndex; i < startIndex + k; i++) {
+            System.out.print(nums[i]);
+            if (i < startIndex + k - 1) System.out.print(", ");
+        }
+        System.out.println("]");
+
+        // STEP 4: Return the average
+        return (double) maxSum / k;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 12, -5, -6, 50, 3};
+        int k = 4;
+
+        double result = findMaxAvg(nums, k);
+        System.out.println("Max Average: " + result);
+    }
+}
+
+// Expected Output:
+// Best subarray: [12, -5, -6, 50]
+// Max Average: 12.75
